@@ -1,7 +1,7 @@
 {
   "tests": [
       {
-        "name": "Unit Tests - Testing your Application: QuadraticEuation: Basic Functions",
+        "name": "Unit Tests - Testing your Application: InhomogenousExponential: Basic Functions",
         "setup": "",
         "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=InhomogenousExponentialAssignmentTest#testBasicFunctionality -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
         "input": "",
@@ -11,7 +11,7 @@
         "points": 1
       },
       {
-        "name": "Unit Tests - Testing your Application: QuadraticEuation: Correctness and Accuracy of Root",
+        "name": "Unit Tests - Testing your Application: InhomogenousExponential: Correctness and Accuracy",
         "setup": "",
         "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=InhomogenousExponentialAssignmentTest#testAccuracy -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
         "input": "",
