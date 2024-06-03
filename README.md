@@ -5,7 +5,8 @@ This exercise is related to random number generation:
 ## Random Number Generation: ICDF Method for Inhomogeneous Exponential Distribution
 
 1) Implement a class that implements the interface `DoubleSupplier` of the package `java.util.function.DoubleSupplier` that generates a sequence of random drawings of
-an **inhomogeneous exponential distribution**.
+an **inhomogeneous exponential distribution** with piece-wise constant intensities (see below how we provide the
+piece-wise constant intensities).
 
 ```
 @FunctionalInterface
@@ -24,6 +25,20 @@ public interface DoubleSupplier {
 2) When done with 1) implement the method `createRandomNumberGeneratorInhomogenousExponential` of the class `InhomogenousExponentialAssignmentSolution`,
 such that it allows to create an object of the class you have implemented in 1).
 
+```
+public DoubleSupplier createRandomNumberGeneratorInhomogenousExponential(RandomNumberGenerator1D uniformSequence, double[] times, double[] intensities)
+```
+
+**Note**: The arguments `times` and `intensities` that are provided to you have the following interpretation:
+
+- The length of the array `intensities` is `times.length + 1`.
+- `intensities[0]` is the intensity for the time period from `0` to `times[0]`.
+- `intensities[i]` is the intensity for the time period from `times[i-1]` to `times[i]`.
+- `intensities[n]` is the intensity for the time period from `times[n-1]` to `Double.INFINITY`.
+
+where `n = intensities.length-1`, i.e., `n = times.length`.
+
+
 A class like `InhomogenousExponentialAssignmentSolution` is called a *Factory*, because it allows to create objects. It allows us to create an object of *your* class, without knowing the name of your class. We will use this method to test your implementation.
 
 *Hint*: This is a trivial task. If your class in 1) is named `RandomNumberGeneratorInhomogenousExponential` and if
@@ -35,16 +50,6 @@ public DoubleSupplier createRandomNumberGeneratorInhomogenousExponential(RandomN
 	return new RandomNumberGeneratorInhomogenousExponential(uniformSequence, times, intensities);
 }
 ```
-
-**Note**: The arguments `times` and `intensities` that are provided to you have the following interpretation:
-
-- The length of the array `intensities` is `times.length + 1`.
-- `intensities[0}` is the intensity for the time period from `0` to `times[0]`.
-- `intensities[i}` is the intensity for the time period from `times[i-1]` to `times[i]`.
-- `intensities[n}` is the intensity for the time period from `times[n-1]` to `Double.INFINITY`.
-
-where `n = intensities.length-1`, i.e., `n = times.length`.
-
 
 You can test your implementation by running the unit test in `src/test/java`.
 
