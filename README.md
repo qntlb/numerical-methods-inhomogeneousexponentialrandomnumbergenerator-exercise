@@ -5,7 +5,7 @@ This exercise is related to random number generation:
 ## Random Number Generation: ICDF Method for Inhomogeneous Exponential Distribution
 
 1) Implement a class that implements the interface `DoubleSupplier` of the package `java.util.function.DoubleSupplier` that generates a sequence of random drawings of
-a **inhomogeneous exponential distribution**.
+an **inhomogeneous exponential distribution**.
 
 ```
 @FunctionalInterface
@@ -51,11 +51,11 @@ You can test your implementation by running the unit test in `src/test/java`.
 ## Main Task
 
 The main task of this exercise is to provide the inversion of the distribution function
-of an inhomogenous exponential distribution with a piece-wise constant intensity.
+of an inhomogeneous exponential distribution with a piece-wise constant intensity.
 
 The most involved step is the inversion of the function t &mapsto; &Lambda;(t), where
 
-- &Lambda;(t) = &lambda;<sub>0</sub> t for t < t<sub>0</sub>
-- &Lambda;(t<sub>i</sub>) = &lambda;<sub>0</sub> (t<sub>0</sub>-0) + &lambda<sub>1</sub> (t<sub>1</sub>-t<sub>0</sub>) + ... + &lambda;<sub>i</sub> (t<sub>i</sub>-t<sub>i-1</sub>)
-- &Lambda;(t) = &Lambda;(t<sub>i-1</sub>) + &lambda;<sub>i</sub> (t-t<sub>i-1</sub>) for t<sub>i-1</sub> < t < t<sub>i</sub>
+- &Lambda;(t) = &lambda;<sub>0</sub> &middot; t for t < t<sub>0</sub>
+- &Lambda;(t<sub>i</sub>) = &lambda;<sub>0</sub> &middot; (t<sub>0</sub>-0) + &lambda;<sub>1</sub> &middot; (t<sub>1</sub>-t<sub>0</sub>) + ... + &lambda;<sub>i</sub> &middot; (t<sub>i</sub>-t<sub>i-1</sub>)
+- &Lambda;(t) = &Lambda;(t<sub>i-1</sub>) + &lambda;<sub>i</sub> &middot; (t-t<sub>i-1</sub>) for t<sub>i-1</sub> < t < t<sub>i</sub>
 
