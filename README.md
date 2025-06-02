@@ -65,4 +65,4 @@ The most involved step is the inversion of the function t &mapsto; &Lambda;(t), 
 - &Lambda;(t) = &Lambda;(t<sub>i-1</sub>) + &lambda;<sub>i</sub> &middot; (t-t<sub>i-1</sub>) &emsp; for t<sub>i-1</sub> < t < t<sub>i</sub> &emsp; (in between to times)
 - &Lambda;(t) = &Lambda;(t<sub>n-1</sub>) + &lambda;<sub>n</sub> &middot; (t-t<sub>n-1</sub>) &emsp; for t<sub>n-1</sub> < t &emsp; (after the last time)
 
-using the times t<sub>0</sub>, t<sub>0</sub>, ..., t<sub>n-1</sub> and the intensities &lambda;<sub>0</sub>, &lambda;<sub>1</sub>, ..., &lambda;<sub>n-1</sub>, &lambda;<sub>n</sub>.
+using the times t<sub>0</sub>, t<sub>1</sub>, ..., t<sub>n-1</sub> and the intensities &lambda;<sub>0</sub>, &lambda;<sub>1</sub>, ..., &lambda;<sub>n-1</sub>, &lambda;<sub>n</sub>.
