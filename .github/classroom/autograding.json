@@ -11,6 +11,16 @@
         "points": 1
       },
       {
+        "name": "Unit Tests - Testing your Application: InhomogenousExponential: Sampling a Survival Probability",
+        "setup": "",
+        "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=InhomogenousExponentialAssignmentTest#testSampling -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 10,
+        "points": 1
+      },
+      {
         "name": "Unit Tests - Testing your Application: InhomogenousExponential: Correctness and Accuracy",
         "setup": "",
         "run": "bash -c \"set -o pipefail; mvn -q -B -Dtest=InhomogenousExponentialAssignmentTest#testAccuracy -Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR test | grep -vF [ERROR]\"",
@@ -18,7 +28,7 @@
         "output": "",
         "comparison": "included",
         "timeout": 10,
-        "points": 3
+        "points": 2
       }
   ]
 }

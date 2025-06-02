@@ -16,6 +16,11 @@ public class InhomogenousExponentialAssignmentTest {
 	}
 	
 	@Test
+	void testSampling() {
+		if(!InhomogenousExponentialImplemenationChecker.check(new InhomogenousExponentialAssignmentSolution(), Check.SAMPLING)) fail();
+	}
+
+	@Test
 	void testAccuracy() {
 		if(!InhomogenousExponentialImplemenationChecker.check(new InhomogenousExponentialAssignmentSolution(), Check.ACCURACY)) fail();
 	}
