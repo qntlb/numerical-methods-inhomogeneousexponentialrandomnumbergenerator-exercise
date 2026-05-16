@@ -66,3 +66,59 @@ The most involved step is the inversion of the function t &mapsto; &Lambda;(t), 
 - &Lambda;(t) = &Lambda;(t<sub>n-1</sub>) + &lambda;<sub>n</sub> &middot; (t-t<sub>n-1</sub>) &emsp; for t<sub>n-1</sub> < t &emsp; (after the last time)
 
 using the times t<sub>0</sub>, t<sub>1</sub>, ..., t<sub>n-1</sub> and the intensities &lambda;<sub>0</sub>, &lambda;<sub>1</sub>, ..., &lambda;<sub>n-1</sub>, &lambda;<sub>n</sub>.
+
+---
+
+
+## Notes
+
+The project is configured to run automated unit tests, JavaDoc, and Checkstyle upon a git push (via GitHub Actions).
+
+### Code Style
+
+We are checking your code style via *Checkstyle*. A failing Checkstyle run does not impact your grade, but you could try to improve it. If desired, you can run the check locally on a command line via the Maven command
+
+```
+mvn checkstyle:check 
+```
+
+(run from the project directory).
+
+Checkstyle will report style issues of your code. If you like to clean up the formatting, you may use *Source -> Clean up...* in Eclipse.
+
+
+### JavaDoc
+
+We are generating documentation from the code via *JavaDoc*. A failing JavaDoc run does not impact your grade, but you could try to improve your documentation. If desired, you can generate the documentation locally on a command line via the Maven command
+
+```
+mvn javadoc:javadoc 
+```
+
+If successful, the JavaDoc will then reside in `target/apidocs`. The project is configured to support
+LaTeX in JavaDocs (use `\(` and `\)` to open and close a math environment).
+
+Note that JavaDoc is HTML. This implies that an `<` needs to be written as `&lt;` and `>` needs to be written as `&gt;`.
+
+
+---
+
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
