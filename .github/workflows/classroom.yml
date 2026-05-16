@@ -136,19 +136,5 @@ jobs:
         echo "📋 Fetching annotations..."
         RESULT=$(gh api "$ANNOTATIONS_URL" | jq -r '.[] | select(.message | test("Node\\.js 20 actions are deprecated") | not) | "**\(.message)**"')
 
-    jobs:
-      build:
-        name: Autograding
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v3
-          - name: Set up Java
-            uses: actions/setup-java@v3
-            with:
-              distribution: 'zulu'
-              java-version: '17'
-          - name: Build with Maven
-            run: mvn -B package --file pom.xml -DskipTests=true
-          - name: Testing your Application (Autograding)
-            uses: education/autograding@v1
-            
+        echo "### Autograding Summary: " >> $GITHUB_STEP_SUMMARY
+        echo "$RESULT" >> $GITHUB_STEP_SUMMARY
