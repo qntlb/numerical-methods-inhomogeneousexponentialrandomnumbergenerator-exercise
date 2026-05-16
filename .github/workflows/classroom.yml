@@ -86,7 +86,55 @@ jobs:
       - name: Testing your Application (Autograding)
         uses: education/autograding@v1
 
-    on: [push]
+  summary:
+    name: 🥉🥈🥇 Summary
+    runs-on: ubuntu-latest
+    needs: autograding
+    if: always()
+    steps:
+    - name: Fetch annotations for this job
+      env:
+        GH_TOKEN: ${{ github.token }}
+        REPO: ${{ github.repository }}
+        RUN_ID: ${{ github.run_id }}
+        JOB_NAME: "Autograding"
+      run: |
+        echo "🔎 Getting job info for run $RUN_ID..."
+        # List jobs in the current run
+        JOBS_JSON=$(gh api repos/$REPO/actions/runs/$RUN_ID/jobs)
+  
+        # Extract the job id for this job name
+        JOB_ID=$(echo "$JOBS_JSON" | jq -r --arg JOB_NAME "$JOB_NAME" '.jobs[] | select(.name==$JOB_NAME) | .id')
+  
+        if [ -z "$JOB_ID" ]; then
+          echo "❌ Could not find job ID for $JOB_NAME"
+          exit 1
+        fi
+        echo "✅ Job ID: $JOB_ID"
+  
+        # Retrieve job info (includes check_run_url)
+        JOB_INFO=$(gh api repos/$REPO/actions/jobs/$JOB_ID)
+        CHECK_RUN_URL=$(echo "$JOB_INFO" | jq -r '.check_run_url')
+  
+        if [ -z "$CHECK_RUN_URL" ] || [ "$CHECK_RUN_URL" == "null" ]; then
+          echo "❌ No check_run_url found for job"
+          exit 1
+        fi
+        echo "✅ Check run URL: $CHECK_RUN_URL"
+  
+        # Get the check run and its annotations URL
+        CHECK_RUN=$(gh api "$CHECK_RUN_URL")
+        ANNOTATIONS_URL=$(echo "$CHECK_RUN" | jq -r '.output.annotations_url')
+  
+        if [ -z "$ANNOTATIONS_URL" ] || [ "$ANNOTATIONS_URL" == "null" ]; then
+          echo "❌ No annotations URL found"
+          exit 1
+        fi
+        echo "✅ Annotations URL: $ANNOTATIONS_URL"
+  
+        # Fetch and print annotations
+        echo "📋 Fetching annotations..."
+        RESULT=$(gh api "$ANNOTATIONS_URL" | jq -r '.[] | select(.message | test("Node\\.js 20 actions are deprecated") | not) | "**\(.message)**"')
 
     jobs:
       build:
