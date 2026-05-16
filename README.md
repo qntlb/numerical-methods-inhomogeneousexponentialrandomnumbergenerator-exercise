@@ -66,14 +66,14 @@ You can test your implementation by running the unit tests in `src/test/java`.
 
 The main task of this exercise is to provide the inversion of the distribution function of an inhomogeneous exponential distribution with a piecewise constant intensity.
 
-The most involved step is the inversion of the function \( t \mapsto \Lambda(t) \), where
+The most involved step is the inversion of the function t &mapsto; &Lambda;(t), where
 
-- \( \Lambda(t) = \lambda_0 \cdot t \) for \( t < t_0 \)
-- \( \Lambda(t_i) = \lambda_0 \cdot (t_0 - 0) + \lambda_1 \cdot (t_1 - t_0) + \cdots + \lambda_i \cdot (t_i - t_{i-1}) \)
-- \( \Lambda(t) = \Lambda(t_{i-1}) + \lambda_i \cdot (t - t_{i-1}) \) for \( t_{i-1} < t < t_i \) &emsp; (in between two times)
-- \( \Lambda(t) = \Lambda(t_{n-1}) + \lambda_n \cdot (t - t_{n-1}) \) for \( t_{n-1} < t \) &emsp; (after the last time)
+- &Lambda;(t) = &lambda;<sub>0</sub> &middot; t for t < t<sub>0</sub>
+- &Lambda;(t<sub>i</sub>) = &lambda;<sub>0</sub> &middot; (t<sub>0</sub>-0) + &lambda;<sub>1</sub> &middot; (t<sub>1</sub>-t<sub>0</sub>) + ... + &lambda;<sub>i</sub> &middot; (t<sub>i</sub>-t<sub>i-1</sub>)
+- &Lambda;(t) = &Lambda;(t<sub>i-1</sub>) + &lambda;<sub>i</sub> &middot; (t-t<sub>i-1</sub>) &emsp; for t<sub>i-1</sub> < t < t<sub>i</sub> &emsp; (in between two times)
+- &Lambda;(t) = &Lambda;(t<sub>n-1</sub>) + &lambda;<sub>n</sub> &middot; (t-t<sub>n-1</sub>) &emsp; for t<sub>n-1</sub> < t &emsp; (after the last time)
 
-using the times \( t_0, t_1, \ldots, t_{n-1} \) and the intensities \( \lambda_0, \lambda_1, \ldots, \lambda_{n-1}, \lambda_n \).
+using the times t<sub>0</sub>, t<sub>1</sub>, ..., t<sub>n-1</sub> and the intensities &lambda;<sub>0</sub>, &lambda;<sub>1</sub>, ..., &lambda;<sub>n-1</sub>, &lambda;<sub>n</sub>.
 
 ---
 
